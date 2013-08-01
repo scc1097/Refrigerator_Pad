@@ -1,0 +1,19 @@
+application: refrigeratorpadwebsite
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: no
+
+handlers:
+- url: /styles
+  static_dir: styles
+
+- url: /_ah/mail/.+
+  script: email_handler.py
+  login: admin
+
+- url: /.*
+  script: main.py
+
+inbound_services:
+- mail
